@@ -1,0 +1,21 @@
+  <div class="content-section introduction">
+    <div>
+      <span class="feature-title">Growl</span>
+      <span>Growl is used to display messages in an overlay.</span>
+    </div>
+  </div>
+
+    <pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+        <!-- Message Service -->
+      <p-messages [(value)]="msgs"></p-messages>
+        <pe-step label="Message Service" [styleClass]="'colorpicker-height'">
+          <div class="subcontent-section">
+              <span>MessageService alternative does not require a value binding to an array. In order to use this service, import the class and define it as a provider in a component higher up in the component tree such as application instance itself so that descandant components can have it injected.</span>
+          </div>
+          <button type="button" pButton (click)="showViaService()" label="Use Service"></button>
+        </pe-step>
+
+    </pe-steps>
+
+
+

@@ -1,0 +1,26 @@
+  <div class="content-section introduction">
+    <div>
+      <span class="feature-title">Growl</span>
+      <span>Growl is used to display messages in an overlay.</span>
+    </div>
+  </div>
+
+    <pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+        <!-- Message Service -->
+
+        <pe-step label="Message Service" [styleClass]="'colorpicker-height'">
+          <div class="subcontent-section">
+              <span>MessageService allows having one growl in the entire application instead of having separate ones in each component that uses it. In order to use this service, import the class and define it as a provider in a component higher up in the component tree such as application instance itself so that descandant components can have it injected..</span>
+          </div>
+          <button type="button" pButton (click)="showViaService()" label="Add with Service"></button>
+          <button type="button" pButton (click)="clearViaService()" label="Clear with Service"></button>
+          <p-growl [value]="msgs" (onClick)="onClick($event)"></p-growl>
+        </pe-step>
+
+        <!-- inline -->
+
+
+    </pe-steps>
+
+
+

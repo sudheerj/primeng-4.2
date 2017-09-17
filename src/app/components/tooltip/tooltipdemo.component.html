@@ -1,0 +1,23 @@
+<form novalidate>
+  <div class="content-section introduction">
+    <div>
+      <span class="feature-title">Tooltip</span>
+      <span>Tooltip provides advisory information for a component.</span>
+    </div>
+  </div>
+
+    <pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+        <!-- Tooltip ZIndex -->
+
+        <pe-step label="Tooltip ZIndex">
+          <div class="subcontent-section">
+              <span>Whether the z-index should be managed automatically to always go on top or have a fixed value.</span>
+          </div>
+          <input type="text" pTooltip="Enter your username" tooltipPosition="top" tooltipEvent="focus" tooltipZIndex="1022">
+        </pe-step>
+
+    </pe-steps>
+
+</form>
+
+<p-growl [value]="msgs"></p-growl>

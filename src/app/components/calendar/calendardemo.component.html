@@ -1,0 +1,34 @@
+<div class="content-section introduction">
+  <div>
+    <span class="feature-title">Calendar</span>
+    <span>Calendar is an input component to select a date.</span>
+  </div>
+</div>
+
+<pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+  <!-- onClose -->
+
+  <pe-step label="ButtonBar">
+    <div class="subcontent-section">
+      <span>Button bar displays today and clear buttons and enabled using showButtonBar property.</span>
+    </div>
+    <p-calendar [(ngModel)]="date1" showButtonBar="true" todayButtonStyleClass="ui-secondary-button" clearButtonStyleClass="ui-secondary-button"
+                (onTodayClick)="onToday()" (onClearClick)="onClear()"></p-calendar>
+  </pe-step>
+
+  <pe-step label="Date Template">
+    <div class="subcontent-section">
+      <span>This is a handy feature to highlight specific dates.</span>
+    </div>
+    <p-calendar [(ngModel)]="date2">
+      <ng-template pTemplate="date" let-date>
+        <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#7cc67c' : 'inherit'}"
+              style="border-radius:50%">{{date.day}}</span>
+      </ng-template>
+    </p-calendar>
+  </pe-step>
+
+
+</pe-steps>
+
+<p-growl [value]="msgs"></p-growl>

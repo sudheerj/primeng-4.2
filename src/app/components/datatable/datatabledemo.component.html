@@ -1,0 +1,59 @@
+<div class="content-section introduction">
+  <div>
+    <span class="feature-title">DataTable</span>
+    <span>DataTable displays data in tabular format..</span>
+  </div>
+</div>
+
+<pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+  <!-- Lazy loading status -->
+
+  <pe-step label="Lazy loading status">
+    <div class="subcontent-section">
+      <span>Built-in loading status for Lazy DataTable.</span>
+    </div>
+    <p-dataTable [value]="cars" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20]"
+                 [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)" [enableLoader]="true">
+      <p-header>List of Cars</p-header>
+      <p-column field="vin" header="Vin"></p-column>
+      <p-column field="year" header="Year"></p-column>
+      <p-column field="brand" header="Brand"></p-column>
+      <p-column field="color" header="Color"></p-column>
+    </p-dataTable>
+  </pe-step>
+
+  <pe-step label="Filter field">
+    <div class="subcontent-section">
+      <span>DataTable column filter field to cusotmize the filter.</span>
+    </div>
+
+    <p-dataTable [value]="cars" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt>
+      <p-header>List of Cars</p-header>
+      <p-column field="vin" header="Vin (startsWith)" [filter]="true" filterfield="vin" filterPlaceholder="Search"></p-column>
+      <p-column field="year" header="Year ({{yearFilter||'No Filter'}})" [filter]="true" filterMatchMode="equals">
+        <ng-template pTemplate="filter" let-col>
+          <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null,col.field,col.filterMatchMode)"></i>
+          <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010"
+                    (onSlideEnd)="dt.filter($event.value,col.field,col.filterMatchMode)"></p-slider>
+        </ng-template>
+      </p-column>
+      <p-column field="brand" header="Brand (Custom)" [filter]="true" filterMatchMode="equals">
+        <ng-template pTemplate="filter" let-col>
+          <p-dropdown [options]="brands" [style]="{'width':'100%'}"
+                      (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
+                      styleClass="ui-column-filter"></p-dropdown>
+        </ng-template>
+      </p-column>
+      <p-column field="color" header="Color (Custom)" [filter]="true" filterMatchMode="in">
+        <ng-template pTemplate="filter" let-col>
+          <p-multiSelect [options]="colors" defaultLabel="All Colors"
+                         (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
+                         styleClass="ui-column-filter"></p-multiSelect>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </pe-step>
+
+</pe-steps>
+
+<p-growl [value]="msgs"></p-growl>

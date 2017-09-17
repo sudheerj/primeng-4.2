@@ -1,0 +1,25 @@
+<form novalidate>
+  <div class="content-section introduction">
+    <div>
+      <span class="feature-title">Tree</span>
+      <span>Tree is used to display hierarchical data.</span>
+    </div>
+  </div>
+
+    <pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+        <!-- Loading -->
+
+        <pe-step label="Loading">
+          <div class="subcontent-section">
+              <span>Tree has a loading property, when enabled a spinner icon is displayed to indicate data load.
+                An optional loadingIcon property can be passed in case you prefer a different icon.</span>
+          </div>
+          <p-tree [value]="filesTree1" [loading]="loading" loadingIcon="fa-circle-o-notch"></p-tree>
+        </pe-step>
+
+
+    </pe-steps>
+
+</form>
+
+<p-growl [value]="msgs"></p-growl>

@@ -1,0 +1,27 @@
+  <div class="content-section introduction">
+    <div>
+      <span class="feature-title">MultiSelect</span>
+      <span>MultiSelect is used to select multiple items from a collection.</span>
+    </div>
+  </div>
+
+    <pe-steps [(activeIndex)]="activeIndex" (change)="onChangeStep($event)">
+        <!-- Template -->
+
+        <pe-step label="Template" >
+          <div class="subcontent-section">
+            <span>Label of a selectitem is displayed by default next to the checkbox in the overlay panel and it is possible to customize the content using templating.</span>
+          </div>
+          <p-multiSelect [options]="cars" [(ngModel)]="selectedCars2" [panelStyle]="{minWidth:'12em'}">
+            <ng-template let-car let-i="index" pTemplate="item">
+              {{i}}
+              <img src="assets/showcase/images/demo/car/{{car.label}}.png" style="width:24px;display:inline-block;vertical-align:middle"/>
+              <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+            </ng-template>
+          </p-multiSelect>
+          <p>Selected Cars: {{selectedCars2}}</p>
+        </pe-step>
+
+    </pe-steps>
+
+<p-growl [value]="msgs"></p-growl>
