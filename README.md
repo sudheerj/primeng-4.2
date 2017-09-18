@@ -1,4 +1,4 @@
-## What's new in PrimeNG-4.1 Release
+## What's new in PrimeNG-4.2 Release
 
 ### Prerequisites
 
