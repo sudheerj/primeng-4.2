@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
         label: 'New features',
         items: [
           {label: 'AutoComplete', icon: 'fa-refresh', routerLink: ['/autocomplete']},
-          {label: 'Dropdown', icon: 'fa-refresh', routerLink: ['/dropdown']},
+         /* {label: 'Dropdown', icon: 'fa-refresh', routerLink: ['/dropdown']},*/
           {label: 'Tooltip', icon: 'fa-refresh', routerLink: ['/tooltip']},
           {label: 'Calendar', icon: 'fa-refresh', routerLink: ['/calendar']},
           {label: 'Growl', icon: 'fa-refresh', routerLink: ['/growl']},
